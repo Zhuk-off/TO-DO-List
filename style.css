@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(238, 233, 204);
+  font-family: Arial, Helvetica, sans-serif;
+  /* margin: 0; */
+}
+
+.content {
+  margin: auto;
+  display: table;
+  border-spacing: 5px 5px;
+  background-color: rgb(230, 230, 164);
+  /* line-height: 25px; */
+}
+
+.list {
+  display: table-cell;
+  background-color: beige;
+  margin: auto;
+  padding-right: 20px;
+}
+
+.todo {
+  display: table-cell;
+  background-color: beige;
+  padding-right: 20px;
+  width: 700px;
+}
+
+.task {
+  display: table;
+}
+
+.img {
+  display: table-cell;
+}
+.task_text {
+  display: table-cell;
+  /* background-color: azure; */
+  width: 100%;
+  position: relative;
+}
+.task_text p {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+.menu_task {
+  display: table-cell;
+}
