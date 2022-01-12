@@ -4,72 +4,195 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>To Do List</title>
   </head>
   <body>
-    <div class="content">
-      <div class="list">
-        <ul>
-          <li>
-            <div class="task">
-              <div class="img">
-                <img src="/img/icons/task_undone.png" alt="" />
-              </div>
-              <div class="task_text">Список задач 1</div>
-              <div class="menu_task">
-                <img src="/img/icons/menu_icon.png" alt="" />
-              </div>
-            </div>
-            Список задач 1 Change the structure of catalogs
-          </li>
-          <li>Список задач 2</li>
-          <li>Список задач 3</li>
-        </ul>
+    <div class="container">
+      <div class="titleBlock">
+        <div class="titleBlock__icon">
+          <a class="titleBlock__closeLink">X</a>
+        </div>
+        <span class="titleBlock__title">My to do list </span>
       </div>
-      <div class="todo">
-        <ul>
-          <li>
-            <div class="task">
-              <div class="img">
-                <img src="/img/icons/task_undone.png" alt="" />
+      <div class="content">
+        <div class="listsInfo">
+          <div class="userInfo">
+            <div class="userInfo__userName"><p>Alexander Zhukoff</p></div>
+            <div class="userInfo__userSettings">
+              <div class="userInfo__photo">
+                <img src="/img/UserPhoto.jpg" alt="" class="userPhoto" />
               </div>
-              <div class="task_text"><p>Задача 1</p></div>
-              <div class="menu_task">
-                <img src="/img/icons/menu_icon.png" alt="" />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="task">
-              <div class="img">
-                <img src="/img/icons/task_undone.png" alt="" />
-              </div>
-              <div class="task_text"><p>Задача 2</p></div>
-              <div class="menu_task">
-                <img src="/img/icons/menu_icon.png" alt="" />
+              <div class="userInfo__settings">
+                <div class="userInfo__linkSettings"><a href="#">Upload photo</a></div>
+                <div class="userInfo__linkSettings"><a href="#">View profile</a></div>
+                <div class="userInfo__linkSettings"><a href="#">Settings</a></div>
               </div>
             </div>
-          </li>
-          <li>
-            <div class="task">
-              <div class="img">
-                <img src="/img/icons/task_undone.png" alt="" />
+          </div>
+          <div class="listsBlock">
+            <div class="listsBlock__item">
+              <div class="listsBlock__icon">
+                <img
+                  src="/img/icons/list_icon.png"
+                  alt=""
+                  class="listsBlock__iconImg"
+                />
               </div>
-              <div class="task_text">
-                <p>
-                  Задача 3 Lorem ipsum dolor sit amet consectetur, adipisicing
-                  elit. Dolorum vel beatae fugiat illum consequuntur laudantium
-                  quam quibusdam cumque velit eum, nihil accusantium ad
-                  consequatur quo! Iste ullam nostrum architecto asperiores!
-                </p>
+              <div class="listsBlock__listTitle">
+                <span>Список покупок</span>
               </div>
-              <div class="menu_task">
-                <img src="/img/icons/menu_icon.png" alt="" />
+              <div class="listsBlock__countUndoneTask"><span>10</span></div>
+            </div>
+
+            <div class="listsBlock__item_active">
+              <div class="listsBlock__icon_active">
+                <img
+                  src="/img/icons/list_active_icon.png"
+                  alt=""
+                  class="listsBlock__iconImg_active"
+                />
+              </div>
+              <div class="listsBlock__listTitle_active">
+                <span>Список дел на сегодня</span>
+              </div>
+              <div class="listsBlock__countUndoneTask_active">
+                <span>8</span>
               </div>
             </div>
-          </li>
-        </ul>
+
+            <div class="listsBlock__item">
+              <div class="listsBlock__icon">
+                <img
+                  src="/img/icons/list_icon.png"
+                  alt=""
+                  class="listsBlock__iconImg"
+                />
+              </div>
+              <div class="listsBlock__listTitle">
+                <span>Не важные дела</span>
+              </div>
+              <div class="listsBlock__countUndoneTask"><span>5</span></div>
+            </div>
+
+            <div class="listsBlock__item">
+              <div class="listsBlock__icon">
+                <img
+                  src="/img/icons/list_icon.png"
+                  alt=""
+                  class="listsBlock__iconImg"
+                />
+              </div>
+              <div class="listsBlock__listTitle">
+                <span>Совсем на дела</span>
+              </div>
+              <div class="listsBlock__countUndoneTask"><span>0</span></div>
+            </div>
+
+            <div class="listsBlock__item">
+              <div class="listsBlock__icon">
+                <img
+                  src="/img/icons/list_icon.png"
+                  alt=""
+                  class="listsBlock__iconImg"
+                />
+              </div>
+              <div class="listsBlock__listTitle">
+                <span>Список задач №1</span>
+              </div>
+              <div class="listsBlock__countUndoneTask"><span>2</span></div>
+            </div>
+
+
+          </div>
+          <div class="addList">
+            <a href="#" class="addList__link">+ Add list</a>
+          </div>
+        </div>
+        <div class="taskBlock">
+          <div class="taskBlock__header">
+            <div class="taskBlock__titleList">
+              <span>Список дел на сегодня</span>
+            </div>
+            <div class="taskBlock__addTask"><a href="#">+ Add task</a></div>
+          </div>
+          <div class="taskList">
+            
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 1</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+             </div>
+         
+            <div class="taskList__task_done">
+              <span class="taskList__checkbox_done">
+                <input checked type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText_done">Задача 2</span>
+            <span class="taskList__notes_done"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 3</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+     
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 4</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 5</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 6</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+         
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 7</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+
+
+            <div class="taskList__task">
+              <span class="taskList__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="taskList__taskText">Задача 8</span>
+            <span class="taskList__notes"><img src="/img/icons/list_noactive_icon.png" class="taskList__imgnotes"></img>
+            </span>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </body>
