@@ -129,7 +129,7 @@ body {
       box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     }
 
-    &_active {
+    &._active {
       font-size: 12px;
       height: 30px;
       background-color: $whitecolor;
@@ -151,13 +151,13 @@ body {
   &__icon {
     display: inline-block;
 
-    &_active {
+    &._active {
       display: inline-block;
     }
   }
 
   &__iconImg {
-    &_active {
+    &._active {
     }
   }
 
@@ -165,7 +165,7 @@ body {
     display: inline-block;
     width: 140px;
 
-    &_active {
+    &._active {
       display: inline-block;
       width: 140px;
     }
@@ -181,7 +181,7 @@ body {
     padding: 2px;
     text-align: center;
 
-    &_active {
+    &._active {
       display: inline-block;
       background: $bluecolor;
       width: 28px;
@@ -266,7 +266,7 @@ body {
       box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.068);
     }
 
-    &_done {
+    &._done {
       height: 30px;
       border-bottom: 1px solid $greycolor2;
       &:hover {
@@ -284,7 +284,7 @@ body {
   &__taskText {
     display: inline-block;
     width: 305px;
-    &_done {
+    &._done {
       display: inline-block;
       width: 305px;
       text-decoration: line-through;
@@ -294,7 +294,7 @@ body {
   &__checkbox {
     display: inline-block;
     padding: 8px;
-    &_done {
+    &._done {
       display: inline-block;
       padding: 8px;
     }
@@ -302,7 +302,7 @@ body {
 
   &__notes {
     display: inline-block;
-    &_done {
+    &._done {
       display: inline-block;
     }
   }
