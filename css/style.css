@@ -413,3 +413,19 @@ body {
 .taskList__notes._done {
   display: inline-block;
 }
+
+.taskList__task._underDownDropElement {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, #ebebeb), color-stop(150%, #0e74cb));
+  background: linear-gradient(to bottom, #ebebeb 70%, #0e74cb 150%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.taskList__task._underUpDropElement {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-70%, #0e74cb), color-stop(30%, #ebebeb));
+  background: linear-gradient(to bottom, #0e74cb -70%, #ebebeb 30%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.taskList__task._draggable {
+  background: rgba(14, 116, 203, 0.1);
+}

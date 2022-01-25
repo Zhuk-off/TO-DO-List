@@ -4,9 +4,13 @@
 $colorTextBoldTittle: #434648;
 $colorTextBoldTittleWhite: #d2d3d4;
 $whitecolor: #ebebeb;
+$whitecolorRGBA: rgba(235, 235, 235, 1);
+$bluecolorRGBA: rgba(14, 116, 203, 1);
+$bluecolorRGBAOpacity: rgba(14, 116, 203, 0.1);
 $bluecolor: #0e74cb;
 $greycolor: #2b333d;
 $greycolor2: #c6c6c6;
+$greycolor2RGBA: rgba(198, 198, 198, 1);
 
 body {
   background: $greycolor2 url(/img/bg.jpg) center no-repeat;
@@ -308,5 +312,27 @@ body {
   }
 
   &__imgnotes {
+  }
+}
+
+.taskList {
+  &__task {
+    &._underDownDropElement {
+      background: linear-gradient(
+        to bottom,
+        $whitecolorRGBA 70%,
+        $bluecolorRGBA 150%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    &._underUpDropElement {
+      background: linear-gradient(
+        to bottom,
+        $bluecolorRGBA -70%,
+        $whitecolorRGBA 30%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    &._draggable {
+      background: $bluecolorRGBAOpacity;
+    }
   }
 }
