@@ -4,6 +4,7 @@
 $colorTextBoldTittle: #434648;
 $colorTextBoldTittleWhite: #d2d3d4;
 $whitecolor: #ebebeb;
+$whitecolorSelected: #f8f8f8;
 $whitecolorRGBA: rgba(235, 235, 235, 1);
 $bluecolorRGBA: rgba(14, 116, 203, 1);
 $bluecolorRGBAOpacity: rgba(14, 116, 203, 0.1);
@@ -257,11 +258,22 @@ body {
   }
 }
 .taskList {
+  // border: 1px solid #000;
   &__task {
     height: 30px;
+    width: 363px;
     border-bottom: 1px solid $greycolor2;
+    // border: 1px solid #000;
+
     &:hover {
-      box-shadow: inset 1px 1px 20px 2px white;
+      // box-shadow: inset 1px 1px 20px 2px white;
+      background: $whitecolorSelected;
+      & img {
+        opacity: 0.7;
+      }
+      & input {
+        background: $whitecolorSelected;
+      }
     }
     &:active {
       position: relative;
@@ -285,33 +297,61 @@ body {
     }
   }
 
+  &__moveBlock {
+    display: inline;
+    max-width: 15px;
+    max-height: 15px;
+    margin-left: 1px;
+    opacity: 1;
+    // border: 1px solid #000;
+    margin-top: 5px;
+  }
+
   &__taskText {
     display: inline-block;
-    width: 305px;
+    width: 310px;
+    background-color: $whitecolor;
+    font-weight: 700;
+    color: $colorTextBoldTittle;
+    // border: 1px solid #000;
+
     &._done {
       display: inline-block;
-      width: 305px;
+      width: 310px;
       text-decoration: line-through;
       color: $greycolor2;
     }
   }
   &__checkbox {
     display: inline-block;
-    padding: 8px;
+    margin-top: 6px;
+
+    // border: 1px solid #000;
+    max-width: 20px;
+    max-height: 20px;
+
     &._done {
       display: inline-block;
-      padding: 8px;
+      // padding: 8px;
     }
   }
 
-  &__notes {
+  &__management {
     display: inline-block;
+    // border: 1px solid #000;
+    max-width: 20px;
+    max-height: 20px;
     &._done {
       display: inline-block;
     }
   }
 
-  &__imgnotes {
+  &__delNotes {
+    display: inline-block;
+    max-width: 20px;
+    max-height: 17px;
+    opacity: 0;
+    // border: 1px solid #000;
   }
 }
 

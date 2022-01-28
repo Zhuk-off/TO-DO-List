@@ -4,31 +4,50 @@
 // Функция: тестовая на элементе + Add task
 function addTask(event) {
   console.log('addTask');
-  console.log(task);
+  const newTask = document.createElement('div');
+  newTask.classList.add('taskList__task');
+  newTask.innerHTML = `<span class="taskList__moveBlock"><img src="/img/icons/icon_drag.svg" class="taskList__moveBlock"></img></span>
+  <span class="taskList__checkbox">
+    <input type="checkbox" name="task" id="" />
+  </span>
+  <span class="taskList__taskText"><input class="taskList__taskText" type="text" value=""></span>
+<span class="taskList__management"><img src="/img/icons/icon_del.png" class="taskList__delNotes"></img>
+</span>`;
+
+  const taskList = document.querySelector('.taskList');
+  taskList.append(newTask);
+  taskListBlock = document.querySelector('.taskList');
+  console.log(taskListBlock);
+
+  // console.log(`querySelector ${taskListBlock}`);
 }
+
 // Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Task(задача внутри которой был клик)
 function getElementTask(target) {
-  if (target.classList.contains('taskList__task')) {
-    return target;
-  } else {
-    for (let i = 0; i < 10; i++) {
-      if (target.parentElement !== null) {
-        if (target.parentElement.classList.contains('taskList__task')) {
-          return target.parentElement;
-        }
-      } else {
-        console.log(target.parentElement.classList.includes('taskList__task'));
-        return null;
-      }
-      target = target.parentElement;
-    }
-  }
+  let ElementTask = target.closest('.taskList__task');
+  return ElementTask;
+}
+// Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Checkbox(checkbox внутри которой был клик)
+function getElementCheckbox(target) {
+  let ElementCheckbox = target.closest('.taskList__checkbox');
+  return ElementCheckbox;
+}
+// Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Checkbox(checkbox внутри которой был клик)
+function getElementDelete(target) {
+  let elementDelete = target.closest('.taskList__delNotes');
+  return elementDelete;
+}
+
+// Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Checkbox(checkbox внутри которой был клик)
+function getElementMove(target) {
+  let elementMove = target.closest('.taskList__moveBlock');
+  return elementMove;
 }
 
 // Функция: Меняет статус задачи выполнено-не выполнено
 function changeStatusTask(task) {
   if (task != null) {
-    let spanCheckBoxTask = task.children[0].children[0];
+    let spanCheckBoxTask = task.children[1].children[0];
     task.classList.contains('_done')
       ? spanCheckBoxTask.removeAttribute('checked')
       : spanCheckBoxTask.setAttribute('checked', '');
@@ -37,15 +56,32 @@ function changeStatusTask(task) {
     task.children[1].classList.toggle('_done');
     task.children[2].classList.toggle('_done');
     task.children[2].children[0].classList.toggle('_done');
+  } else {
+    console.log('changeStatusTask(null)');
   }
 }
 
 // Функция при клике на задачу получает элемент, меняет его состояние
 function taskClick(event) {
+  console.log(taskListBlock);
+  console.log('taskListBlock');
+
   let target = event.target;
   let taskElement = getElementTask(target);
-  changeStatusTask(taskElement);
-  // getAllTasks();
+  let isTaskCheckboxElement = getElementCheckbox(target);
+  let isTaskDeleteElement = getElementDelete(target);
+  if (taskElement == null) {
+    return;
+  }
+  if (isTaskDeleteElement != null) {
+    taskElement.remove();
+    // return;
+  }
+  if (isTaskCheckboxElement != null) {
+    changeStatusTask(taskElement);
+    // return;
+  }
+  getAllTasks();
 }
 
 // Функция: собирает данные из списка задач. Выход: архив с объектами задач
@@ -55,15 +91,16 @@ function getAllTasks() {
   for (let i = 0; i < taskList.length; i++) {
     let taskObject = {};
     const taskHTML = taskList[i];
-    const taskText = taskHTML.querySelector('.taskList__taskText');
+    const taskTextElement = taskHTML.querySelector('.taskList__taskText>input');
+    const taskText = taskTextElement.value;
     const taskCheckbox = taskHTML.querySelector('.taskList__checkbox>input');
-    const taskNotes = taskHTML.querySelector('.taskList__notes');
-    if (taskCheckbox.outerHTML.includes('checked=""', 0)) {
+    // if (taskCheckbox.outerHTML.includes('checked=""', 0)) {
+    if (taskCheckbox.hasAttribute('checked')) {
       taskObject.done = 1;
     } else {
       taskObject.done = 0;
     }
-    taskObject.textTask = taskText.innerHTML;
+    taskObject.textTask = taskText;
     tasksArray.push(taskObject);
   }
   console.log(tasksArray);
@@ -72,10 +109,14 @@ function getAllTasks() {
 // -----------------------------------------------------
 
 // Событие клик на задачу выполнено-не выполнено
-// let ball;
 let taskListBlock = document.querySelector('.taskList');
-taskListBlock.addEventListener('onmousedown', dragDrop);
-// taskListBlock.addEventListener('click', taskClick);
+let addTaskBlock = document.querySelector('.taskBlock__addTask');
+console.log(taskListBlock);
+// console.log(`querySelector ${taskListBlock}`);
+addTaskBlock.addEventListener('click', addTask);
+// console.log(`afdter addTask ${taskListBlock}`);
+taskListBlock.addEventListener('mousedown', dragDrop);
+taskListBlock.addEventListener('click', taskClick);
 // getAllTasks();
 
 // -----------------------------------------------------
@@ -84,172 +125,165 @@ taskListBlock.addEventListener('onmousedown', dragDrop);
 function dragDrop(event) {
   let target = event.target;
   let taskElement = getElementTask(target);
-  // document.removeEventListener('mousemove', onMouseMove);
-  // ball = taskElement;
-}
+  let isTaskMoveElement = getElementMove(target);
+  if (isTaskMoveElement == null || taskElement == null) {
+    return;
+  }
 
-// потенциальная цель переноса, над которой мы пролетаем прямо сейчас
-let currentDroppable = null;
-let pasteUpOrDown;
-ball.onmousedown = function onmouseDown(event) {
-  // (1) отследить нажатие
+  let coordsItemX = event.clientX - taskElement.getBoundingClientRect().left;
+  let coordsItemY = event.clientY - taskElement.getBoundingClientRect().top;
 
-  let shiftX = event.clientX - ball.getBoundingClientRect().left;
-  let shiftY = event.clientY - ball.getBoundingClientRect().top;
+  let taskElementSizes = {
+    width: taskElement.offsetWidth,
+    height: taskElement.offsetHeight,
+  };
 
-  // (2) подготовить к перемещению:
-  // разместить поверх остального содержимого и в абсолютных координатах
-  ball.style.position = 'absolute';
-  ball.style.zIndex = 1000;
-  // переместим в body, чтобы мяч был точно не внутри position:relative
-  const taskListTest = document.querySelector('.taskList');
+  let taskListBlockSizes = {
+    left: taskListBlock.getBoundingClientRect().left + scrollX,
+    top: taskListBlock.getBoundingClientRect().top + scrollY,
+    right:
+      taskListBlock.getBoundingClientRect().left +
+      scrollX +
+      taskListBlock.offsetWidth,
+    bottom:
+      taskListBlock.getBoundingClientRect().top +
+      scrollY +
+      taskListBlock.offsetHeight,
+  };
 
-  // document.body.append(ball);
-  taskListTest.append(ball);
-  // и установим абсолютно спозиционированный мяч под курсор
+  taskElement.style.position = 'absolute';
+  taskElement.style.zIndex = 1000;
+  taskElement.style.border = '1px solid #c6c6c6';
+  taskElement.style.opacity = 0.75;
+  document.body.append(taskElement);
 
-  moveAt(event.pageX, event.pageY);
+  moveTaskElement(event.pageX, event.pageY);
 
-  // передвинуть мяч под координаты курсора
-  // и сдвинуть на половину ширины/высоты для центрирования
-  function moveAt(pageX, pageY) {
-    ball.style.left = pageX - shiftX + 'px';
-    ball.style.top = pageY - shiftY + 'px';
-    // console.log(taskListTest.getBoundingClientRect());
-    // console.log(taskListTest.offsetTop);
-    console.log(document.documentElement.clientWidth);
-    console.log(`высота окна ${document.documentElement.clientHeight}`);
-    console.log(`ширина окна ${document.documentElement.clientWidth}`);
-    console.log(`pageX  ${pageX}`);
-    console.log(`pageY  ${pageY}`);
+  function moveTaskElement(pageX, pageY) {
+    let currentX = pageX - coordsItemX;
+    let currentY = pageY - coordsItemY;
+
     if (
-      pageX < 0 ||
-      pageY < 0 ||
-      pageX > document.documentElement.clientWidth ||
-      pageY > document.documentElement.clientHeight
+      currentX + taskElementSizes.width <= taskListBlockSizes.right &&
+      currentX >= taskListBlockSizes.left
     ) {
-      console.log(`pageY or pageX < 0`);
-      // onmouseupFn();
-      onmouseout();
-      return;
+      taskElement.style.left = `${currentX}px`;
+    } else {
+      if (currentX + taskElementSizes.width > taskListBlockSizes.right) {
+        taskElement.style.left = `${
+          taskListBlockSizes.right - taskElementSizes.width
+        }px`;
+      }
+      if (currentX < taskListBlockSizes.left) {
+        taskElement.style.left = `${taskListBlockSizes.left}px`;
+      }
+    }
+    if (
+      currentY + taskElementSizes.height <= taskListBlockSizes.bottom &&
+      currentY >= taskListBlockSizes.top
+    ) {
+      taskElement.style.top = `${currentY}px`;
+    } else {
+      if (currentY + taskElementSizes.height > taskListBlockSizes.bottom) {
+        taskElement.style.top = `${
+          taskListBlockSizes.bottom - taskElementSizes.height
+        }px`;
+      }
+      if (currentY < taskListBlockSizes.top) {
+        taskElement.style.top = `${taskListBlockSizes.top}px`;
+      }
     }
   }
 
-  function onMouseMove(event) {
-    moveAt(event.pageX, event.pageY);
+  let currentDroppable = null;
 
-    ball.hidden = true; // (*) прячем переносимый элемент
-    let elemBelow = document.elementFromPoint(event.clientX, event.clientY); // elemBelow - элемент под мячом (возможная цель переноса)
-    ball.hidden = false;
+  function onDragTaskElement(event) {
+    moveTaskElement(event.pageX, event.pageY);
 
-    if (!elemBelow) return; // если clientX/clientY за пределами окна, то выдает null - игнорирует
-    let elemBelowParent = elemBelow.closest('.taskList__task');
+    taskElement.hidden = true;
+    let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+    taskElement.hidden = false;
 
-    if (!elemBelowParent) return; //если clientX/clientY за пределами блока, то выдает null - игнорирует
+    if (!elemBelow) return;
+    let droppableBelow = elemBelow.closest('.taskList__task');
 
-    // console.log(`top ${elemBelowParent.getBoundingClientRect().top}`);
-    // console.log(`bottom ${elemBelowParent.getBoundingClientRect().bottom}`);
-    // console.log(`elemBelow ${elemBelowParent.tagName}`);
-    // console.log(`координаты по Y ${event.clientY}`);
+    if (!droppableBelow) return; //если clientX/clientY за пределами блока, то выдает null - игнорирует
+
+    // вычисления, для выбора подсветки droppableBelow исходя из пложения taskelement
+    let pasteUpOrDown;
     let сoordinatesOfTheCursor = event.clientY;
     let positionCenterElemBelow =
-      (elemBelowParent.getBoundingClientRect().bottom -
-        elemBelowParent.getBoundingClientRect().top) /
+      (droppableBelow.getBoundingClientRect().bottom -
+        droppableBelow.getBoundingClientRect().top) /
         2 +
-      elemBelowParent.getBoundingClientRect().top;
-    // console.log(`предельные координаты по Y ${positionCenterElemBelow}`);
-    // событие mousemove может произойти и когда указатель за пределами окна
-    // (мяч перетащили за пределы экрана)
-
-    // потенциальные цели переноса помечены классом droppable (может быть и другая логика)
-    let droppableBelow = elemBelow.closest('.taskList__task');
+      droppableBelow.getBoundingClientRect().top;
 
     сoordinatesOfTheCursor >= positionCenterElemBelow
       ? (pasteUpOrDown = 'pasteDown')
       : (pasteUpOrDown = 'pasteUp');
+
     console.log(pasteUpOrDown);
-    console.log(elemBelowParent);
 
     if (pasteUpOrDown == 'pasteDown') {
-      elemBelowParent.classList.remove('_underUpDropElement');
-      elemBelowParent.classList.add('_underDownDropElement');
+      if (!droppableBelow.classList.contains('_underDownDropElement')) {
+        droppableBelow.classList.remove('_underUpDropElement');
+        droppableBelow.classList.add('_underDownDropElement');
+      }
     }
     if (pasteUpOrDown == 'pasteUp') {
-      elemBelowParent.classList.remove('_underDownDropElement');
-      elemBelowParent.classList.add('_underUpDropElement');
+      if (!droppableBelow.classList.contains('_underUpDropElement')) {
+        droppableBelow.classList.remove('_underDownDropElement');
+        droppableBelow.classList.add('_underUpDropElement');
+      }
     }
 
-    if (currentDroppable != droppableBelow) {
-      // мы либо залетаем на цель, либо улетаем из неё
-      // внимание: оба значения могут быть null
-      //   currentDroppable=null,
-      //     если мы были не над droppable до этого события (например, над пустым пространством)
-      //   droppableBelow=null,
-      //     если мы не над droppable именно сейчас, во время этого события
-
+    if (currentDroppable !== droppableBelow) {
       if (currentDroppable) {
-        // elemBelow.classList.remove('_underDownDropElement');
-        // elemBelow.classList.remove('_underUpDropElement');
-        // null если мы были не над droppable до этого события
-        // (например, над пустым пространством)
-        // логика обработки процесса "вылета" из droppable (удаляем подсветку)
-        leaveDroppable(currentDroppable);
+        cleanStyleDroppableBelow(currentDroppable);
       }
       currentDroppable = droppableBelow;
-
       if (currentDroppable) {
-        // логика обработки процесса, когда мы "влетаем" в элемент droppable
-        enterDroppable(currentDroppable);
+        cleanStyleDroppableBelow(currentDroppable);
       }
     }
   }
 
-  ball.onmouseup = function () {
-    document.removeEventListener('mousemove', onMouseMove);
-    ball.onmouseup = null;
-    ball.removeAttribute('style'); // удаляем стили, с помщью которых div висел над элементами
-    const taskList = document.querySelector('.taskList');
+  document.addEventListener('mousemove', onDragTaskElement);
+
+  document.addEventListener('mouseup', mouseUp, { once: true });
+
+  function mouseUp() {
+    document.removeEventListener('mousemove', onDragTaskElement);
+
+    taskElement.removeAttribute('style');
     const underUpDropElement = document.querySelector('._underUpDropElement');
     const underDownDropElement = document.querySelector(
       '._underDownDropElement'
     );
     if (underDownDropElement == null && underUpDropElement == null) {
-      taskList.append(ball);
+      taskListBlock.append(taskElement);
     }
 
     if (underDownDropElement != null) {
-      underDownDropElement.after(ball);
+      underDownDropElement.after(taskElement);
     }
 
     if (underUpDropElement != null) {
-      underUpDropElement.before(ball);
+      underUpDropElement.before(taskElement);
     }
 
-    leaveDroppable(currentDroppable);
-  };
-  // (3) перемещать по экрану
-  document.addEventListener('mousemove', onMouseMove);
+    cleanStyleDroppableBelow(currentDroppable);
+  }
 
-  // (4) положить мяч, удалить более ненужные обработчики событий
-
-  function enterDroppable(elem) {}
-
-  function leaveDroppable(elem) {
+  function cleanStyleDroppableBelow(elem) {
+    if (elem == null) {
+      return;
+    }
     elem.classList.remove('_underUpDropElement');
     elem.classList.remove('_underDownDropElement');
   }
 
-  // отключаеп браузерный Drag’n’Drop
-  ball.ondragstart = function () {
-    return false;
-  };
-
-  function onmouseout() {
-    document.removeEventListener('mousemove', onMouseMove);
-    ball.onmouseup = null;
-    ball.removeAttribute('style'); // удаляем стили, с помщью которых div висел над элементами
-    const taskList = document.querySelector('.taskList');
-    taskList.append(ball);
-    leaveDroppable(currentDroppable);
-  }
-};
+  taskElement.addEventListener('dragstart', function (event) {
+    event.preventDefault();
+  });
+}
