@@ -309,7 +309,7 @@ body {
 
   &__taskText {
     display: inline-block;
-    width: 310px;
+    width: 309px;
     background-color: $whitecolor;
     font-weight: 700;
     color: $colorTextBoldTittle;
@@ -317,7 +317,7 @@ body {
 
     &._done {
       display: inline-block;
-      width: 310px;
+      width: 309px;
       text-decoration: line-through;
       color: $greycolor2;
     }

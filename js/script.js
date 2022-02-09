@@ -1,9 +1,8 @@
 'use strict';
 
 // Функции -----------------------------------
-// Функция: тестовая на элементе + Add task
+// Функция: добавить новую задачу 'Add task'
 function addTask(event) {
-  console.log('addTask');
   const newTask = document.createElement('div');
   newTask.classList.add('taskList__task');
   newTask.innerHTML = `<span class="taskList__moveBlock"><img src="/img/icons/icon_drag.svg" class="taskList__moveBlock"></img></span>
@@ -13,13 +12,12 @@ function addTask(event) {
   <span class="taskList__taskText"><input class="taskList__taskText" type="text" value=""></span>
 <span class="taskList__management"><img src="/img/icons/icon_del.png" class="taskList__delNotes"></img>
 </span>`;
-
   const taskList = document.querySelector('.taskList');
   taskList.append(newTask);
+  const input = newTask.querySelector('.taskList__taskText>input');
+  input.focus();
   taskListBlock = document.querySelector('.taskList');
-  console.log(taskListBlock);
-
-  // console.log(`querySelector ${taskListBlock}`);
+  return newTask;
 }
 
 // Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Task(задача внутри которой был клик)
@@ -63,9 +61,6 @@ function changeStatusTask(task) {
 
 // Функция при клике на задачу получает элемент, меняет его состояние
 function taskClick(event) {
-  console.log(taskListBlock);
-  console.log('taskListBlock');
-
   let target = event.target;
   let taskElement = getElementTask(target);
   let isTaskCheckboxElement = getElementCheckbox(target);
@@ -84,44 +79,7 @@ function taskClick(event) {
   getAllTasks();
 }
 
-// Функция: собирает данные из списка задач. Выход: архив с объектами задач
-function getAllTasks() {
-  const taskList = document.querySelectorAll('.taskList__task');
-  let tasksArray = [];
-  for (let i = 0; i < taskList.length; i++) {
-    let taskObject = {};
-    const taskHTML = taskList[i];
-    const taskTextElement = taskHTML.querySelector('.taskList__taskText>input');
-    const taskText = taskTextElement.value;
-    const taskCheckbox = taskHTML.querySelector('.taskList__checkbox>input');
-    // if (taskCheckbox.outerHTML.includes('checked=""', 0)) {
-    if (taskCheckbox.hasAttribute('checked')) {
-      taskObject.done = 1;
-    } else {
-      taskObject.done = 0;
-    }
-    taskObject.textTask = taskText;
-    tasksArray.push(taskObject);
-  }
-  console.log(tasksArray);
-  return tasksArray;
-}
-// -----------------------------------------------------
-
-// Событие клик на задачу выполнено-не выполнено
-let taskListBlock = document.querySelector('.taskList');
-let addTaskBlock = document.querySelector('.taskBlock__addTask');
-console.log(taskListBlock);
-// console.log(`querySelector ${taskListBlock}`);
-addTaskBlock.addEventListener('click', addTask);
-// console.log(`afdter addTask ${taskListBlock}`);
-taskListBlock.addEventListener('mousedown', dragDrop);
-taskListBlock.addEventListener('click', taskClick);
-// getAllTasks();
-
-// -----------------------------------------------------
-// Событие Drag&drop
-
+// Функция Drag & Drop
 function dragDrop(event) {
   let target = event.target;
   let taskElement = getElementTask(target);
@@ -287,3 +245,105 @@ function dragDrop(event) {
     event.preventDefault();
   });
 }
+
+// Функция: собирает данные из списка задач. Выход: архив с объектами задач
+function getAllTasks() {
+  const taskList = document.querySelectorAll('.taskList__task');
+  let tasksArray = [];
+  for (let i = 0; i < taskList.length; i++) {
+    let taskObject = {};
+    const taskHTML = taskList[i];
+    const taskTextElement = taskHTML.querySelector('.taskList__taskText>input');
+    const taskText = taskTextElement.value;
+    const taskCheckbox = taskHTML.querySelector('.taskList__checkbox>input');
+    // if (taskCheckbox.outerHTML.includes('checked=""', 0)) {
+    if (taskCheckbox.hasAttribute('checked')) {
+      taskObject.done = 1;
+    } else {
+      taskObject.done = 0;
+    }
+    taskObject.textTask = taskText;
+    tasksArray.push(taskObject);
+  }
+  saveTasksArrayInLocalStorage(tasksArray);
+  console.log(tasksArray);
+  return tasksArray;
+}
+
+function saveTasksArrayInLocalStorage(tasksArray) {
+  let tasksArrayJson = JSON.stringify(tasksArray);
+  localStorage.setItem('listToday', tasksArrayJson);
+}
+
+function getTasksArrayFromLocalStorage() {
+  const tasksArrayJson = localStorage.getItem('listToday');
+  const tasksArray = JSON.parse(tasksArrayJson);
+  return tasksArray;
+}
+
+function delAllTasksElement(taskListBlock) {
+  // console.log(
+  //   taskListBlock,
+  //   taskListBlock.firstElementChild,
+  //   taskListBlock.children.length
+  // );
+  const numberTasks = taskListBlock.children.length;
+  for (let i = 0; i < numberTasks; i++) {
+    taskListBlock.firstElementChild.remove();
+  }
+}
+
+function createTaskList(tasksArray) {
+  console.log(tasksArray);
+  tasksArray.forEach((task) => {
+    console.log(task.done, task.textTask);
+    addTask();
+    const taskList = document.querySelector('.taskList');
+    const newTask = taskList.lastChild;
+    const textTask = newTask.querySelector('.taskList__taskText>input');
+    const checkTask = newTask.querySelector('.taskList__checkbox>input');
+    console.log(newTask, textTask, checkTask);
+    // textTask.value('task.textTask');
+    // console.log(textTask.setAttribute(value, task.textTask));
+    // textTask.setAttribute(value, task.textTask);
+    textTask.setAttribute('value', task.textTask);
+    if (task.done) {
+      changeStatusTask(newTask);
+    }
+    textTask.blur();
+  });
+}
+
+function updateTaskList(taskListBlock) {
+  delAllTasksElement(taskListBlock);
+  const tasksArray = getTasksArrayFromLocalStorage();
+  createTaskList(tasksArray);
+}
+
+function beforeUnLoad() {
+  localStorage.clear();
+  getAllTasks();
+}
+// -----------------------------------------------------
+
+// Событие клик на задачу выполнено-не выполнено
+let taskListBlock = document.querySelector('.taskList');
+let addTaskBlock = document.querySelector('.taskBlock__addTask');
+// console.log(taskListBlock);
+// console.log(`querySelector ${taskListBlock}`);
+addTaskBlock.addEventListener('click', addTask);
+// console.log(`afdter addTask ${taskListBlock}`);
+taskListBlock.addEventListener('mousedown', dragDrop);
+taskListBlock.addEventListener('click', taskClick);
+taskListBlock.addEventListener('keyup', function (event) {
+  if (event.code === 'Enter') {
+    addTask();
+  }
+});
+window.addEventListener('beforeunload', beforeUnLoad);
+// let tasksArray = getAllTasks();
+// let tasksArrayJson = JSON.stringify(tasksArray);
+// localStorage.setItem('listToday', tasksArrayJson);
+// console.log(getTasksArrayFromLocalStorage());
+updateTaskList(taskListBlock);
+// console.log(getAllTasks());

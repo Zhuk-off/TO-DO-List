@@ -403,7 +403,7 @@ body {
 
 .taskList__taskText {
   display: inline-block;
-  width: 310px;
+  width: 309px;
   background-color: #ebebeb;
   font-weight: 700;
   color: #434648;
@@ -411,7 +411,7 @@ body {
 
 .taskList__taskText._done {
   display: inline-block;
-  width: 310px;
+  width: 309px;
   text-decoration: line-through;
   color: #c6c6c6;
 }
