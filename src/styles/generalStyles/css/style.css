@@ -91,7 +91,7 @@ h6 {
 
 /*--------------------*/
 body {
-  background: #c6c6c6 url(/img/bg.jpg) center no-repeat;
+  background: #c6c6c6 url(/src/assets/img/bg.jpg) center no-repeat;
   padding: 120px 0 120px 0;
   font-family: 'PT Sans', sans-serif;
 }
@@ -102,7 +102,7 @@ body {
   margin: 0 auto;
 }
 
-.titleBlock {
+.title-block {
   height: 49px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.75);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.75);
@@ -111,7 +111,7 @@ body {
   background-image: linear-gradient(to top, #b9b9b9 0%, #ededed 100%);
 }
 
-.titleBlock__icon {
+.title-block__icon {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -120,7 +120,7 @@ body {
   border-radius: 50%;
 }
 
-.titleBlock__closeLink {
+.title-block__close-link {
   display: block;
   text-align: center;
   max-width: 20px;
@@ -130,7 +130,7 @@ body {
   color: #eaeaea;
 }
 
-.titleBlock__title {
+.title-block__title {
   font-weight: 700;
   color: #434648;
 }
@@ -143,71 +143,71 @@ body {
   height: 100%;
 }
 
-.listsInfo {
+.lists-info {
   display: block;
   width: 35.75221%;
   max-height: 100%;
   background-color: #2b333d;
 }
 
-.userInfo {
+.user-info {
   padding: 18px;
   height: 132px;
 }
 
-.userInfo__userName {
+.user-info__user-name {
   color: #0e74cb;
   font-weight: 700;
   padding-bottom: 8px;
 }
 
-.userInfo__userSettings {
+.user-info__user-settings {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.userInfo__photo {
+.user-info__photo {
   display: inline-block;
   width: 50%;
   height: 65px;
 }
 
-.userInfo__settings {
+.user-info__settings {
   display: inline-block;
   width: 50%;
 }
 
-.userInfo__linkSettings {
+.user-info__link-settings {
   font-size: 10px;
   font-weight: 700;
   padding: 8px 8px 8px 13px;
 }
 
-.userInfo__linkSettings a {
+.user-info__link-settings a {
   color: #d2d3d4;
 }
 
-.userInfo__linkSettings a:hover {
+.user-info__link-settings a:hover {
   color: #0e74cb;
 }
 
-.userInfo__linkSettings a:active {
+.user-info__link-settings a:active {
   position: relative;
   top: 2px;
 }
 
-.userPhoto {
+.user-photo {
   max-width: 100%;
   border-radius: 3px;
 }
 
-.listsBlock {
+.lists-block {
   color: #d2d3d4;
   font-weight: 700;
 }
 
-.listsBlock__item {
+.lists-block__item {
   background-color: #0e74cb;
   height: 30px;
   padding: 8px;
@@ -215,19 +215,19 @@ body {
   border-bottom: 1px solid #2b333d;
 }
 
-.listsBlock__item:hover {
+.lists-block__item:hover {
   -webkit-box-shadow: inset 1px 1px 20px 2px rgba(255, 255, 255, 0.4);
           box-shadow: inset 1px 1px 20px 2px rgba(255, 255, 255, 0.4);
 }
 
-.listsBlock__item:active {
+.lists-block__item:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-.listsBlock__item._active {
+.lists-block__item._active {
   font-size: 12px;
   height: 30px;
   background-color: #ebebeb;
@@ -236,37 +236,37 @@ body {
   border-bottom: 1px solid #2b333d;
 }
 
-.listsBlock__item._active:hover {
+.lists-block__item._active:hover {
   -webkit-box-shadow: inset 1px 1px 20px 2px rgba(0, 0, 0, 0.4);
           box-shadow: inset 1px 1px 20px 2px rgba(0, 0, 0, 0.4);
 }
 
-.listsBlock__item._active:active {
+.lists-block__item._active:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-.listsBlock__icon {
+.lists-block__icon {
   display: inline-block;
 }
 
-.listsBlock__icon._active {
+.lists-block__icon._active {
   display: inline-block;
 }
 
-.listsBlock__listTitle {
-  display: inline-block;
-  width: 140px;
-}
-
-.listsBlock__listTitle._active {
+.lists-block__list-title {
   display: inline-block;
   width: 140px;
 }
 
-.listsBlock__countUndoneTask {
+.lists-block__list-title._active {
+  display: inline-block;
+  width: 140px;
+}
+
+.lists-block__count-undone-task {
   display: inline-block;
   background: #ebebeb;
   width: 28px;
@@ -277,7 +277,7 @@ body {
   text-align: center;
 }
 
-.listsBlock__countUndoneTask._active {
+.lists-block__count-undone-task._active {
   display: inline-block;
   background: #0e74cb;
   width: 28px;
@@ -288,7 +288,7 @@ body {
   text-align: center;
 }
 
-.addList {
+.add-list {
   width: 202px;
   height: 27px;
   background-color: #2b333d;
@@ -298,24 +298,24 @@ body {
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.addList__link {
+.add-list__link {
   color: #0e74cb;
 }
 
-.addList:hover {
+.add-list:hover {
   -webkit-box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.1);
   margin: 0 0 1px 0px;
 }
 
-.addList:active {
+.add-list:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-.taskBlock {
+.task-block {
   display: block;
   width: 64.24779%;
   max-height: 100%;
@@ -324,75 +324,75 @@ body {
   color: #434648;
 }
 
-.taskBlock__header {
+.task-block__header {
   padding: 10px 0 10px 30px;
 }
 
-.taskBlock__titleList {
+.task-block__title-list {
   padding-bottom: 10px;
 }
 
-.taskBlock__addTask a {
+.task-block__add-task a {
   font-size: 12px;
   color: #0e74cb;
 }
 
-.taskBlock__addTask a:hover {
+.task-block__add-task a:hover {
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   margin: 0 0 0 1px;
 }
 
-.taskBlock__addTask a:active {
+.task-block__add-task a:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.taskList__task {
+.task-list__task {
   height: 30px;
   width: 363px;
   border-bottom: 1px solid #c6c6c6;
 }
 
-.taskList__task:hover {
+.task-list__task:hover {
   background: #f8f8f8;
 }
 
-.taskList__task:hover img {
+.task-list__task:hover img {
   opacity: 0.7;
 }
 
-.taskList__task:hover input {
+.task-list__task:hover input {
   background: #f8f8f8;
 }
 
-.taskList__task:active {
+.task-list__task:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.068);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.068);
 }
 
-.taskList__task._done {
+.task-list__task._done {
   height: 30px;
   border-bottom: 1px solid #c6c6c6;
 }
 
-.taskList__task._done:hover {
+.task-list__task._done:hover {
   -webkit-box-shadow: inset 1px 1px 20px 2px white;
           box-shadow: inset 1px 1px 20px 2px white;
 }
 
-.taskList__task._done:active {
+.task-list__task._done:active {
   position: relative;
   top: 2px;
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-.taskList__moveBlock {
+.task-list__move-block {
   display: inline;
   max-width: 15px;
   max-height: 15px;
@@ -401,7 +401,7 @@ body {
   margin-top: 5px;
 }
 
-.taskList__taskText {
+.task-list__task-text {
   display: inline-block;
   width: 309px;
   background-color: #ebebeb;
@@ -409,53 +409,53 @@ body {
   color: #434648;
 }
 
-.taskList__taskText._done {
+.task-list__task-text._done {
   display: inline-block;
   width: 309px;
   text-decoration: line-through;
   color: #c6c6c6;
 }
 
-.taskList__checkbox {
+.task-list__checkbox {
   display: inline-block;
   margin-top: 6px;
   max-width: 20px;
   max-height: 20px;
 }
 
-.taskList__checkbox._done {
+.task-list__checkbox._done {
   display: inline-block;
 }
 
-.taskList__management {
+.task-list__management {
   display: inline-block;
   max-width: 20px;
   max-height: 20px;
 }
 
-.taskList__management._done {
+.task-list__management._done {
   display: inline-block;
 }
 
-.taskList__delNotes {
+.task-list__del-notes {
   display: inline-block;
   max-width: 20px;
   max-height: 17px;
   opacity: 0;
 }
 
-.taskList__task._underDownDropElement {
+.task-list__task._under-down-drop-element {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, #ebebeb), color-stop(150%, #0e74cb));
   background: linear-gradient(to bottom, #ebebeb 70%, #0e74cb 150%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-.taskList__task._underUpDropElement {
+.task-list__task._under-up-drop-element {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-70%, #0e74cb), color-stop(30%, #ebebeb));
   background: linear-gradient(to bottom, #0e74cb -70%, #ebebeb 30%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-.taskList__task._draggable {
+.task-list__task._draggable {
   background: rgba(14, 116, 203, 0.1);
 }
