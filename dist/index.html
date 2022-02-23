@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/src/styles/generalStyles/css/style.css" /> -->
+    <title>To Do List</title>
+  <script defer src="runtime.936aa4de6f7b3e26abbf.js"></script><script defer src="vendors.b14ae45ae50f28a61b91.js"></script><script defer src="main.6043f546b450174c0e13.js"></script></head>
+  <body>
+    <div class="container">
+      <div class="title-block">
+        <div class="title-block__icon">
+          <a class="title-block__close-link">X</a>
+        </div>
+        <span class="title-block__title">My to do list </span>
+      </div>
+      <div class="content">
+        <div class="lists-info">
+          <div class="user-info">
+            <div class="user-info__user-name"><p>Alexander Zhukoff</p></div>
+            <div class="user-info__user-settings">
+              <div class="user-info__photo">
+                <img
+                  src="images/23bf87ffe07b78b84f74.jpg"
+                  alt=""
+                  class="user-photo"
+                />
+              </div>
+              <div class="user-info__settings">
+                <div class="user-info__link-settings">
+                  <a href="#">Upload photo</a>
+                </div>
+                <div class="user-info__link-settings">
+                  <a href="#">View profile</a>
+                </div>
+                <div class="user-info__link-settings">
+                  <a href="#">Settings</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lists-block">
+            <div class="lists-block__item">
+              <div class="lists-block__icon">
+                <img
+                  src="images/621d06512c0fcca55f80.png"
+                  alt=""
+                  class="lists-block__icon-img"
+                />
+              </div>
+              <div class="lists-block__list-title">
+                <span>Список покупок</span>
+              </div>
+              <div class="lists-block__count-undone-task"><span>10</span></div>
+            </div>
+
+            <div class="lists-block__item _active">
+              <div class="lists-block__icon _active">
+                <img
+                  src="images/7945f0b81f518216344f.png"
+                  alt=""
+                  class="lists-block__icon-img _active"
+                />
+              </div>
+              <div class="lists-block__list-title _active">
+                <span>Список дел на сегодня</span>
+              </div>
+              <div class="lists-block__count-undone-task _active">
+                <span>8</span>
+              </div>
+            </div>
+
+            <div class="lists-block__item">
+              <div class="lists-block__icon">
+                <img
+                  src="images/621d06512c0fcca55f80.png"
+                  alt=""
+                  class="lists-block__icon-img"
+                />
+              </div>
+              <div class="lists-block__list-title">
+                <span>Не важные дела</span>
+              </div>
+              <div class="lists-block__count-undone-task"><span>5</span></div>
+            </div>
+
+            <div class="lists-block__item">
+              <div class="lists-block__icon">
+                <img
+                  src="images/621d06512c0fcca55f80.png"
+                  alt=""
+                  class="lists-block__icon-img"
+                />
+              </div>
+              <div class="lists-block__list-title">
+                <span>Совсем на дела</span>
+              </div>
+              <div class="lists-block__count-undone-task"><span>0</span></div>
+            </div>
+
+            <div class="lists-block__item">
+              <div class="lists-block__icon">
+                <img
+                  src="images/621d06512c0fcca55f80.png"
+                  alt=""
+                  class="lists-block__icon-img"
+                />
+              </div>
+              <div class="lists-block__list-title">
+                <span>Список задач №1</span>
+              </div>
+              <div class="lists-block__count-undone-task"><span>2</span></div>
+            </div>
+          </div>
+          <div class="add-list">
+            <a href="#" class="add-list__link">+ Add list</a>
+          </div>
+        </div>
+        <div class="task-block">
+          <div class="task-block__header">
+            <div class="task-block__title-list">
+              <span>Список дел на сегодня</span>
+            </div>
+            <div class="task-block__add-task">
+              <a href="#" class="task-block__link-add-task">+ Add task</a>
+            </div>
+          </div>
+          <div class="task-list">
+            <!--   
+            <div class="task-list__task"> 
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 1"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+             </div>
+         
+            <div class="task-list__task _done">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+              <span class="task-list__checkbox _done">
+                <input checked type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text _done"><input class="task-list__task-text _done" type="text" value="Задача 2"></span>
+            <span class="task-list__management _done"><img src="/src/assets/img/icons/icon_del.png" class="task-list__task-textdel-notes"></img>
+            </span>
+            </div>
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 3"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+     
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 4"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 5"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 6"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+         
+            <div class="task-list__task" id="ball">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 7"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+
+
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 8"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div>
+
+            <div class="task-list__task">
+              <span class="task-list__move-block"><img src="/src/assets/img/icons/icon_drag.svg" class="task-list__move-block"></img></span>
+
+              <span class="task-list__checkbox">
+                <input type="checkbox" name="task" id="" />
+              </span>
+              <span class="task-list__task-text"><input class="task-list__task-text" type="text" value="Задача 9"></span>
+            <span class="task-list__management"><img src="/src/assets/img/icons/icon_del.png" class="task-list__del-notes"></img>
+            </span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script type="module" src="/src/js/index.js"></script> -->
+    <!-- <script src="./index.bundle.js"></script> -->
+  </body>
+</html>

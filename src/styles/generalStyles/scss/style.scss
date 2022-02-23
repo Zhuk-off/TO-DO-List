@@ -14,7 +14,8 @@ $greycolor2: #c6c6c6;
 $greycolor2RGBA: rgba(198, 198, 198, 1);
 
 body {
-  background: $greycolor2 url(/src/assets/img/bg.jpg) center no-repeat;
+  background: $greycolor2 url(/src/assets/img/bg.jpg) 100% 100% no-repeat;
+  background-size: cover;
   padding: 120px 0 120px 0;
   font-family: 'PT Sans', sans-serif;
 }
