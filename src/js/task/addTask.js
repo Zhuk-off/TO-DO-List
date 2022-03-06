@@ -1,6 +1,7 @@
 'use strict';
 import icon_drag from '../../assets/img/icons/icon_drag.svg';
 import icon_del from '../../assets/img/icons/icon_del.png';
+import { changeHeightBlock } from '../changeHeightBlock';
 
 // Функция: добавить новую задачу 'Add task'
 export function addTask(event) {
@@ -18,5 +19,6 @@ export function addTask(event) {
   const input = newTask.querySelector('.task-list__task-text>input');
   input.focus();
   const taskListBlock = document.querySelector('.task-list');
+  changeHeightBlock();
   return newTask;
 }

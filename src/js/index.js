@@ -5,6 +5,7 @@ import { addTask } from './task/addTask.js';
 import {
   getElementTaskListBlock,
   getElementAddTaskBlock,
+  getElementTask,
 } from './task/getElement.js';
 import { taskClick } from './task/taskClick.js';
 import { updateTaskList } from './task/updateTaskList.js';
@@ -13,6 +14,7 @@ import { beforeUnLoad } from './beforeUnLoad/beforeUnLoad.js';
 // import Icon from '../assets/img/bg.jpg';
 import html from '../index.html';
 import '../styles/generalStyles/scss/style.scss';
+import { changeHeightBlock } from './changeHeightBlock.js';
 
 let taskListBlock = getElementTaskListBlock();
 let addTaskBlock = getElementAddTaskBlock();

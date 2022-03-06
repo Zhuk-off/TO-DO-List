@@ -6,6 +6,7 @@ import {
   getElementDelete,
 } from './getElement.js';
 import { getAllTasks } from './getAllTasks.js';
+import { changeHeightBlock } from '../changeHeightBlock.js';
 export function taskClick(event) {
   let target = event.target;
   // let taskElement = getElementTask(target);
@@ -17,6 +18,7 @@ export function taskClick(event) {
   }
   if (isTaskDeleteElement != null) {
     taskElement.remove();
+    changeHeightBlock();
     // return;
   }
   if (isTaskCheckboxElement != null) {
