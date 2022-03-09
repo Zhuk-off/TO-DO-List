@@ -1,6 +1,5 @@
-import { getAllTasks } from '../task/getAllTasks.js';
+import { saveActiveList } from '../lists/saveActiveList';
 
 export function beforeUnLoad() {
-  localStorage.clear();
-  getAllTasks();
+  saveActiveList();
 }

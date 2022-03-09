@@ -1,4 +1,5 @@
 'use strict';
+import { saveActiveList } from '../lists/saveActiveList.js';
 import {
   getElementTask,
   getElementMove,
@@ -159,6 +160,7 @@ export function dragDrop(event) {
     }
 
     cleanStyleDroppableBelow(currentDroppable);
+    saveActiveList();
   }
 
   function cleanStyleDroppableBelow(elem) {

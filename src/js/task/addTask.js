@@ -2,6 +2,7 @@
 import icon_drag from '../../assets/img/icons/icon_drag.svg';
 import icon_del from '../../assets/img/icons/icon_del.png';
 import { changeHeightBlock } from '../changeHeightBlock';
+import { saveActiveList } from '../lists/saveActiveList';
 
 // Функция: добавить новую задачу 'Add task'
 export function addTask(event) {

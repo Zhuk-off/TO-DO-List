@@ -1,4 +1,5 @@
-import { saveTasksArrayInLocalStorage } from '../localStorage/recordingInLocalStorage.js';
+import { getNameCurrentList } from '../lists/getCurrentList.js';
+// import { saveTasksArrayInLocalStorage } from '../localStorage/recordingInLocalStorage.js';
 
 export function getAllTasks() {
   const taskList = document.querySelectorAll('.task-list__task');
@@ -17,9 +18,9 @@ export function getAllTasks() {
       taskObject.done = 0;
     }
     taskObject.textTask = taskText;
+    taskObject.listName = getNameCurrentList();
     tasksArray.push(taskObject);
   }
-  saveTasksArrayInLocalStorage(tasksArray);
-  console.log(tasksArray);
+  // console.log(tasksArray);
   return tasksArray;
 }
