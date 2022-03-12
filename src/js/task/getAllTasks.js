@@ -21,6 +21,5 @@ export function getAllTasks() {
     taskObject.listName = getNameCurrentList();
     tasksArray.push(taskObject);
   }
-  // console.log(tasksArray);
   return tasksArray;
 }

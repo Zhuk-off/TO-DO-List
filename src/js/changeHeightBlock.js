@@ -10,10 +10,6 @@ export function changeHeightBlock(className) {
   const heightLittleblockAndHeightTaskBlockHeader =
     heightLittleblock + heightTaskBlockHeader;
 
-  // console.log('heightLittleblock', heightLittleblock);
-  // console.log('heightBigBlock', heightBigBlock);
-  // console.log('heightTaskBlockHeader', heightTaskBlockHeader);
-
   if (heightLittleblockAndHeightTaskBlockHeader >= heightBigBlock) {
     container.style.height = `${heightLittleblock + heightTaskBlockHeader}px`;
   }
@@ -22,11 +18,6 @@ export function changeHeightBlock(className) {
     heightBigBlock > heightLittleblockAndHeightTaskBlockHeader &&
     heightLittleblockAndHeightTaskBlockHeader >= 600
   ) {
-    // console.log('heightBigBlock==', heightBigBlock);
-    // console.log(
-    //   'heightLittleblockAndHeightTaskBlockHeader==',
-    //   heightLittleblockAndHeightTaskBlockHeader
-    // );
     container.style.height = `${heightLittleblockAndHeightTaskBlockHeader}px`;
   }
 }

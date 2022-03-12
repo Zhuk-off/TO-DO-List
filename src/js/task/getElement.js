@@ -14,6 +14,11 @@ function getElementDelete(target) {
   return elementDelete;
 }
 
+function getElementInput(target) {
+  let elementInput = target.closest('.task-list__task-text>input');
+  return elementInput;
+}
+
 // Функция: Вход: элемент на который кликнули в taskBlock. Выход: родительский элемент Checkbox(checkbox внутри которой был клик)
 function getElementMove(target) {
   let elementMove = target.closest('.task-list__move-block');
@@ -25,11 +30,22 @@ function getElementBySelector(selector) {
   return taskListBlock;
 }
 
-function getElementAddTaskBlock(selector = '.task-block__add-task') {
+function getAddTaskElement() {
+  const selector = '.task-block__add-task';
   return getElementBySelector(selector);
 }
 
-function getElementTaskListBlock(selector = '.task-list') {
+function getAddListElement() {
+  const selector = '.add-list__link';
+  return getElementBySelector(selector);
+}
+
+function getTasksBlockElement() {
+  const selector = '.task-list';
+  return getElementBySelector(selector);
+}
+function getListsBlockElement() {
+  const selector = '.lists-block';
   return getElementBySelector(selector);
 }
 
@@ -38,6 +54,9 @@ export {
   getElementCheckbox,
   getElementDelete,
   getElementMove,
-  getElementAddTaskBlock,
-  getElementTaskListBlock,
+  getAddTaskElement,
+  getTasksBlockElement,
+  getListsBlockElement,
+  getAddListElement,
+  getElementInput,
 };

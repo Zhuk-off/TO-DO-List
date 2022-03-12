@@ -4,15 +4,17 @@ export function getCurrentList() {
   const currentList = allList.find((item) =>
     item.classList.contains('_active')
   );
-  // console.log('getNameCurrentList - currentList', currentList);
   return currentList;
 }
 export function getNameCurrentList() {
   const currentList = getCurrentList();
-  const titleElement = currentList.querySelector(
-    '.lists-block__list-title > span'
-  );
-  const title = titleElement.innerHTML;
-  // console.log('getNameCurrentList - title', title);
-  return title;
+  if (currentList != undefined) {
+    const titleElement = currentList.querySelector(
+      '.lists-block__list-title > span'
+    );
+    const title = titleElement.innerHTML;
+    return title;
+  } else {
+    return null;
+  }
 }

@@ -3,11 +3,11 @@ import { saveActiveList } from '../lists/saveActiveList.js';
 import {
   getElementTask,
   getElementMove,
-  getElementTaskListBlock,
+  getTasksBlockElement,
 } from '../task/getElement.js';
 
 export function dragDrop(event) {
-  let taskListBlock = getElementTaskListBlock();
+  let taskListBlock = getTasksBlockElement();
   let target = event.target;
   let taskElement = getElementTask(target);
   let isTaskMoveElement = getElementMove(target);

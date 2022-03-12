@@ -1,13 +1,15 @@
-import { updateTaskList } from '../task/updateTaskList';
-import { loadTaskList } from './loadTaskList';
+import { storage } from '../storage/storage';
+import { getListsBlockElement } from '../task/getElement';
+import { loadTasksCurrent } from './loadTaskList';
 import { saveActiveList } from './saveActiveList';
 
 export function setActive(event) {
   let list = event.target.closest('.lists-block__item');
   if (list) {
-    let listsBlockElement = list.closest('.lists-block');
-    let allList = Array.from(listsBlockElement.children);
+    let listBlock = list.closest('.lists-block');
+    let allList = Array.from(listBlock.children);
     saveActiveList();
+
     allList.forEach((element) => {
       element.classList.remove('_active');
       let childElements = Array.from(element.children);
@@ -21,18 +23,21 @@ export function setActive(event) {
     listElements.forEach((element) => {
       element.classList.add('_active');
     });
+
     let listName = list.querySelector(
       '.lists-block__list-title > span'
     ).innerHTML;
-    loadTaskList(listName);
+
+    storage.setListNameCurrent(listName);
+    loadTasksCurrent();
   } else {
     return event;
   }
 }
 
 export function setActiveListName(listName) {
-  let listsBlockElement = document.querySelector('.lists-block');
-  let allList = Array.from(listsBlockElement.children);
+  const listBlock = getListsBlockElement();
+  const allList = Array.from(listBlock.children);
 
   allList.forEach((element) => {
     element.classList.remove('_active');
@@ -56,4 +61,5 @@ export function setActiveListName(listName) {
   listElements.forEach((element) => {
     element.classList.add('_active');
   });
+  storage.setListNameCurrent(listName);
 }

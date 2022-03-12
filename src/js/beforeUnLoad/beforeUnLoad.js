@@ -1,5 +1,7 @@
 import { saveActiveList } from '../lists/saveActiveList';
+import { storage } from '../storage/storage';
 
 export function beforeUnLoad() {
-  saveActiveList();
+  storage.save();
+  // saveActiveList();
 }
