@@ -20,10 +20,14 @@ import html from '../index.html';
 import '../styles/generalStyles/scss/style.scss';
 import { changeHeightBlock } from './changeHeightBlock.js';
 import { setActive, setActiveListName } from './lists/setActive.js';
-import { getCurrentList, getNameCurrentList } from './lists/getCurrentList.js';
+import { getCurrentList, getNameCurrentList } from './lists/getList.js';
 // import { getTasksFromList, saveOrdertLists } from './lists/listsObject.js';
 import { addListByClick } from './lists/addList.js';
 import { storage } from './storage/storage.js';
+import {
+  updateCounterTask,
+  updateTitleNameList,
+} from './lists/updaterDetails.js';
 
 const taskBlock = getTasksBlockElement();
 const listBlock = getListsBlockElement();
@@ -43,5 +47,4 @@ taskBlock.addEventListener('keyup', function (event) {
   }
 });
 window.addEventListener('beforeunload', beforeUnLoad);
-
 loadListsAndTasks();

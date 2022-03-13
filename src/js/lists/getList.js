@@ -1,3 +1,5 @@
+import { getTitleListElement } from '../task/getElement';
+
 export function getCurrentList() {
   const listsBlockElement = document.querySelector('.lists-block');
   const allList = Array.from(listsBlockElement.children);
@@ -17,4 +19,17 @@ export function getNameCurrentList() {
   } else {
     return null;
   }
+}
+
+export function getList(listName) {
+  const listsBlockElement = document.querySelector('.lists-block');
+  const allList = Array.from(listsBlockElement.children);
+  const list = allList.find(function (item) {
+    let title = item.querySelector('.lists-block__list-title > span');
+    title = title.innerHTML;
+    if (title === listName) {
+      return item;
+    }
+  });
+  return list;
 }

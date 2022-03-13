@@ -30,6 +30,13 @@ export let storage = {
   delValue: function (key) {
     this.storageTask.delete(key);
   },
+
+  getUndoneTaskInList: function (listName) {
+    let valuesArray = this.getValue(listName);
+    let valuesFilter = valuesArray.filter((item) => item.done === 0);
+    return valuesFilter.length;
+  },
+
   sort: function (arrayKey) {
     let sortMap = new Map();
     array.forEach((element) => {

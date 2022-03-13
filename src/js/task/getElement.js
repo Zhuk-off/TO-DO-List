@@ -49,6 +49,11 @@ function getListsBlockElement() {
   return getElementBySelector(selector);
 }
 
+function getTitleListElement() {
+  const selector = '.task-block__title-list>span';
+  return getElementBySelector(selector);
+}
+
 export {
   getElementTask,
   getElementCheckbox,
@@ -59,4 +64,5 @@ export {
   getListsBlockElement,
   getAddListElement,
   getElementInput,
+  getTitleListElement,
 };

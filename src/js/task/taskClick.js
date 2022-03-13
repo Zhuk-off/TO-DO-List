@@ -10,6 +10,7 @@ import { changeHeightBlock } from '../changeHeightBlock.js';
 import { saveActiveList } from '../lists/saveActiveList.js';
 import { storage } from '../storage/storage.js';
 import { getAllTasks } from './getAllTasks.js';
+import { updateCounterTask } from '../lists/updaterDetails.js';
 
 export function taskClick(event) {
   let target = event.target;
@@ -23,10 +24,12 @@ export function taskClick(event) {
   if (isTaskDeleteElement != null) {
     taskElement.remove();
     changeHeightBlock();
+    // updateCounterTask(storage.getListNameCurrent());
     // return;
   }
   if (isTaskCheckboxElement != null) {
     changeStatusTask(taskElement);
+    // updateCounterTask(storage.getListNameCurrent());
     // return;
   }
 
@@ -41,4 +44,5 @@ export function taskClick(event) {
 
 function saveTask() {
   storage.setValueCurrentList(getAllTasks());
+  updateCounterTask(storage.getListNameCurrent());
 }

@@ -1,4 +1,4 @@
-import { getNameCurrentList } from '../lists/getCurrentList.js';
+import { getNameCurrentList } from '../lists/getList.js';
 // import { saveTasksArrayInLocalStorage } from '../localStorage/recordingInLocalStorage.js';
 
 export function getAllTasks() {

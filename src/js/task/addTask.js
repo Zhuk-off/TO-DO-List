@@ -5,6 +5,7 @@ import { changeHeightBlock } from '../changeHeightBlock';
 import { getTasksBlockElement } from './getElement';
 import { storage } from '../storage/storage';
 import { getAllTasks } from './getAllTasks';
+import { updateCounterTask } from '../lists/updaterDetails';
 
 export function addTask() {
   const newTask = document.createElement('div');
@@ -21,7 +22,7 @@ export function addTask() {
   const input = newTask.querySelector('.task-list__task-text>input');
   input.focus();
   changeHeightBlock();
-
+  updateCounterTask(storage.getListNameCurrent());
   return input;
 }
 
@@ -32,4 +33,5 @@ export function addTaskEvent() {
 
 function saveTask() {
   storage.setValueCurrentList(getAllTasks());
+  updateCounterTask(storage.getListNameCurrent());
 }
