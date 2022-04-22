@@ -1,5 +1,6 @@
 import icon_drag from '../../assets/img/icons/icon_drag.svg';
 import { storage } from '../storage/storage';
+import { delTasks } from '../task/delAllElement';
 import { getListsBlockElement } from '../task/getElement';
 import { saveActiveList } from './saveActiveList';
 import { setActiveListName } from './setActive';
@@ -52,6 +53,7 @@ function updateListsBlock() {
   listBlock.lastChild.remove();
   addList(listName);
   setActiveListName(listName);
+  delTasks();
 }
 
 function pressEnter(event) {

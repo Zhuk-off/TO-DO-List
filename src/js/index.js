@@ -1,11 +1,8 @@
 'use strict';
 import '@babel/polyfill';
 import { dragDrop } from './dragDrop/dragDrop.js';
-import { addTask, addTaskEvent } from './task/addTask.js';
+import { addTaskEvent } from './task/addTask.js';
 import {
-  getElementTaskListBlock,
-  getElementAddTaskBlock,
-  getElementTask,
   getTasksBlockElement,
   getListsBlockElement,
   getAddListElement,
@@ -14,21 +11,11 @@ import {
 import { taskClick } from './task/taskClick.js';
 import { loadListsAndTasks, updateTaskList } from './task/loadListsAndTasks.js';
 import { beforeUnLoad } from './beforeUnLoad/beforeUnLoad.js';
-// import '../styles/generalStyles/css/style.css';
-// import Icon from '../assets/img/bg.jpg';
-import html from '../index.html';
 import '../styles/generalStyles/scss/style.scss';
-import { changeHeightBlock } from './changeHeightBlock.js';
 import { setActive, setActiveListName } from './lists/setActive.js';
-import { getCurrentList, getNameCurrentList } from './lists/getList.js';
-// import { getTasksFromList, saveOrdertLists } from './lists/listsObject.js';
 import { addListByClick } from './lists/addList.js';
-import { storage } from './storage/storage.js';
-import {
-  updateCounterTask,
-  updateTitleNameList,
-} from './lists/updaterDetails.js';
 
+// localStorage.clear();
 const taskBlock = getTasksBlockElement();
 const listBlock = getListsBlockElement();
 const addToTaskBlock = getAddTaskElement();

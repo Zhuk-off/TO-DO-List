@@ -40,6 +40,7 @@ export function dragDrop(event) {
   taskElement.style.zIndex = 1000;
   taskElement.style.border = '1px solid #c6c6c6';
   taskElement.style.opacity = 0.75;
+  // taskElement.style.cursor = 'grabbing';
   document.body.append(taskElement);
 
   moveTaskElement(event.pageX, event.pageY);

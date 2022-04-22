@@ -120,6 +120,7 @@ body {
   font-weight: 700;
 
   &__item {
+    cursor: pointer;
     background-color: $bluecolor;
     height: 30px;
     padding: 6px 0px 8px 2px;
@@ -156,7 +157,10 @@ body {
 
   &__icon {
     display: inline;
-
+    cursor: grab;
+    &:active {
+      // cursor: grabbing;
+    }
     &._active {
       display: inline;
     }
@@ -311,6 +315,10 @@ body {
     opacity: 1;
     // border: 1px solid #000;
     margin-top: 5px;
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
   }
 
   &__task-text {
@@ -364,6 +372,7 @@ body {
 .task-list {
   &__task {
     &._under-down-drop-element {
+      // cursor: grab;
       background: linear-gradient(
         to bottom,
         $whitecolorRGBA 70%,
@@ -371,6 +380,7 @@ body {
       ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     }
     &._under-up-drop-element {
+      // cursor: grab;
       background: linear-gradient(
         to bottom,
         $bluecolorRGBA -70%,
@@ -378,6 +388,7 @@ body {
       ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     }
     &._draggable {
+      // cursor: grab;
       background: $bluecolorRGBAOpacity;
     }
   }

@@ -50,7 +50,7 @@ export let storage = {
     const listsToObject = Object.fromEntries(this.storageTask);
     const listsToJson = JSON.stringify(listsToObject);
     localStorage.setItem('listsAndTasks', listsToJson);
-    if (this.getListNameCurrent() != 'false') {
+    if (this.getListNameCurrent() !== 'false') {
       localStorage.removeItem('listNameCurrent');
       localStorage.setItem('listNameCurrent', this.getListNameCurrent());
     }
@@ -58,7 +58,7 @@ export let storage = {
 
   load: function () {
     try {
-      if (this.getListNameCurrent() == 'false') {
+      if (this.getListNameCurrent() === 'false') {
         this.setListNameCurrent(localStorage.getItem('listNameCurrent'));
       }
       const tasksArrayJson = localStorage.getItem('listsAndTasks');
